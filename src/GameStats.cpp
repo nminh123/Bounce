@@ -1,7 +1,7 @@
 #include "../include/GameStats.hpp"
 
 GameStats::GameStats()
-    : m_Font("../../content/Roboto-VariableFont_wdth,wght.ttf"),
+    : m_Font("content/Roboto-VariableFont_wdth,wght.ttf"),
       m_ScoreText(m_Font), m_LivesText(m_Font), m_HighScoreText(m_Font) {
   m_ScoreText.setPosition({10, 10});
   m_ScoreText.setFillColor(sf::Color::Cyan);
@@ -14,7 +14,7 @@ GameStats::GameStats()
   m_HighScoreText.setPosition({10, 110});
   m_HighScoreText.setFillColor(sf::Color::Yellow);
   SetHighScore(0);
-  if(std::ifstream file{"../../HighScore.txt"}){
+  if(std::ifstream file{"HighScore.txt"}){
     file >> m_HighScore;
   }
   else {
@@ -53,7 +53,7 @@ int GameStats::GetHighScore() const { return m_HighScore; }
 
 void GameStats::Reset() {
   if (m_Score > m_HighScore) {
-    if(std::ofstream file{"../../HighScore.txt"}){
+    if(std::ofstream file{"HighScore.txt"}){
         file << m_Score;
     }
     SetHighScore(m_Score);
